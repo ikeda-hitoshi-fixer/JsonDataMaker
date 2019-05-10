@@ -1,30 +1,18 @@
-﻿using BankVision.WebAPI.Models.GW0008.Request;
-using CsvHelper.Configuration;
+﻿using CsvHelper.Configuration;
+using JsonDataMaker.Core.DomainObjects;
 
 namespace JsonDataMaker.Core.Maps
 {
-    /// <summary>
-    /// 預金口座残高照会RequestMap
-    /// </summary>
-    public class GW0008RequestMap : ClassMap<RequestMessageData>
+    public class GW0008RequestMap : ClassMap<GW0008RequestObject>
     {
         public GW0008RequestMap()
         {
-            // 店番
-            Map(x => x.YokinkozaZandakashokai.ShokaiKomoku.temban)
-                .Index(0).Name("temban");
-            // 科目コード
-            Map(x => x.YokinkozaZandakashokai.ShokaiKomoku.kamokuCode)
-                .Index(1).Name("kamokuCode");
-            // 口座番号
-            Map(x => x.YokinkozaZandakashokai.ShokaiKomoku.kozabango)
-                .Index(2).Name("kozabango");
-            // 過振区分
-            Map(x => x.YokinkozaZandakashokai.ShokaiKomoku.kaburiKubun)
-                .Index(3).Name("kaburiKubun");
-            // 契約者ID
-            Map(x => x.YokinkozaZandakashokai.KensaKomoku.keiyakushaId)
-                .Index(4).Name("keiyakushaId");
+            Map(x => x.FileId).Index(0).Name("FileId");
+            Map(x => x.temban).Index(1).Name("temban");
+            Map(x => x.kamokuCode).Index(2).Name("kamokuCode");
+            Map(x => x.kozabango).Index(3).Name("kozabango");
+            Map(x => x.kaburiKubun).Index(4).Name("kaburiKubun");
+            Map(x => x.keiyakushaId).Index(5).Name("keiyakushaId");
         }
     }
 }
